@@ -7,16 +7,16 @@
                                 Width="530"
                                 Visibility="Visible"/>
 ```
-а фоновую музыку загрузить в 31 строке .cs файла
+Фоновую музыку загрузить в 31 строке .cs файла
 ```
 string directory = Environment.CurrentDirectory + "\\..\\..\\";
             Playlist list = new Playlist(new List<Music>
             {
-                new Music {source = new Uri(directory + "AC_DC — Highway to Hell.wav"), name = "Rock"},
+                new Music {source = new Uri(directory + "Путь к треку"), name = "название"},
             });
             CustomPlayer.SetPlayList(list);
  ```
- а фоновую музыку загрузить в 31 строке .cs файла
+В качестве плеера для фоновой музыки используется [AudioPlayer by StounhandJ](https://github.com/StounhandJ/AudioPlayer) 
 
 В результате работа выглядит следующим образом:
 
