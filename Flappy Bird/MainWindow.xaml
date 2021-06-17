@@ -1,0 +1,111 @@
+﻿<Window x:Class="Flappy_Bird_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:audioPlayer="clr-namespace:AudioPlayer;assembly=AudioPlayer"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="Птичка" Height="490" Width="525">
+    <Grid MouseDown="Grid_MouseDown">
+        <Canvas Name="MyCanvas" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
+            <Image Height="490" Source="images/back.jpg" Tag="back" />
+            <Image Height="145" Width="200" Source="images/clouds.png" Canvas.Left="28" Canvas.Top="120" Tag="clouds" />
+            <Image Height="145" Width="200" Source="images/clouds2.png" Canvas.Left="307" Canvas.Top="120" Tag="clouds" />
+
+
+            <Image Height="390" Width="66" Source="images/pipeBottom.png" Tag="obs1" Canvas.Left="76" Canvas.Top="270" />
+            <Image Height="390" Width="66" Source="images/pipeTop.png" Tag="obs1" Canvas.Left="76" Canvas.Top="-236" />
+
+            <Image Height="390" Width="66" Source="images/pipeBottom.png" Tag="obs2" Canvas.Left="228" Canvas.Top="416" />
+            <Image Height="390" Width="66" Source="images/pipeTop.png" Tag="obs2" Canvas.Left="228" Canvas.Top="-90" />
+
+            <Image Height="390" Width="66" Source="images/pipeBottom.png" Tag="obs3" Canvas.Left="426" Canvas.Top="292" />
+            <Image Height="390" Width="66" Source="images/pipeTop.png" Tag="obs3" Canvas.Left="426" Canvas.Top="-214" />
+
+            <Image Name="flappyBird" Height="36" Width="50" Source="images/flappyBird.png" Stretch="Fill"
+                   Canvas.Top="190" Canvas.Left="10" />
+
+            
+            <Button Content="✖"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="Russo one"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    x:Name="exit"
+                    ToolTip="Закрыть игру"
+                    Margin="490,0,0,0"
+                    Click="exit_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FE6584" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFDA4664" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="23" Height="23"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="♕"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="Russo one"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    x:Name="upload"
+                    ToolTip="Загрузить свой скин"
+                    Margin="490,400,0,0"
+                    Click="Upload_OnClick">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FE6584" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFDA4664" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="23" Height="23"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <audioPlayer:Player Name="CustomPlayer" 
+                                Margin="-490,440,0,0"
+                                Width="530"
+                                Visibility="Collapsed"/>
+            <Label Name="txtScore" 
+                   FontSize="22" 
+                   FontWeight="ExtraBold" 
+                   Content="Очков: 0" 
+                   FontFamily="Russo One"
+                   Foreground="White" 
+                   Background="Black" 
+                   Margin="0,420,0,0" />
+        </Canvas>
+    </Grid>
+</Window>
